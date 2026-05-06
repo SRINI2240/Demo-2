@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Avenue | Artisan Coffee & Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2C1B14;
+            --accent: #C4A484;
+            --bg: #F9F7F2;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: var(--white);
+            padding: 1rem 10%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: var(--white);
+        }
+
+        /* --- About Section --- */
+        section {
+            padding: 100px 10%;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            margin-top: 10px;
+        }
+
+        /* --- Menu Section --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .menu-price {
+            display: block;
+            color: var(--accent);
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        /* --- Gallery --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            filter: grayscale(20%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        /* --- Contact --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 50px 10%;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about, .contact-container { grid-template-columns: 1fr; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">L'Avenue</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Artisan Roastery</h1>
+        <p>Morning moments, brewed to perfection.</p>
+        <a href="#menu" class="btn">View Our Menu</a>
+    </section>
+
+    <section class="about" id="about">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800" alt="Cafe Interior" class="about-img">
+        <div>
+            <h2 class="section-title">Our Story</h2>
+            <p>Founded in 2014, L'Avenue began with a simple mission: to bring the world's finest single-origin beans to our local neighborhood. Every cup is a result of meticulous roasting and a passion for the craft.</p>
+            <p style="margin-top: 1rem;">We believe in sustainable sourcing and the art of slow-living.</p>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title" style="text-align: center; margin: 0 auto 50px auto;">The Daily Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>V60 Pour Over</h3>
+                <span class="menu-price">$6.50</span>
+                <p>Ethiopian heirloom beans with notes of jasmine and citrus.</p>
+            </div>
+            <div class="menu-card">
+                <h3>Flat White</h3>
+                <span class="menu-price">$4.50</span>
+                <p>Velvety micro-foam poured over a double shot of espresso.</p>
+            </div>
+            <div class="menu-card">
+                <h3>Almond Croissant</h3>
+                <span class="menu-price">$5.00</span>
+                <p>Flaky house-made pastry filled with sweet frangipane.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Atmosphere</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=600" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1497933322477-941fb43c7040?auto=format&fit=crop&q=80&w=600" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1525610553991-2bede1a233e9?auto=format&fit=crop&q=80&w=600" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" class="gallery-item">
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <div class="map-placeholder">
+                <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Lane, Portland OR</p>
+            </div>
+            <form>
+                <h2 class="section-title">Visit Us</h2>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="5" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">L'Avenue</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2026 L'Avenue Artisan Coffee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
